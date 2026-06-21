@@ -62,6 +62,7 @@ describe('Doc4AI Execute - File Size Limit', () => {
 				if (paramName === 'binaryPropertyName') return 'data';
 				if (paramName === 'outputFormat') return 'text';
 				if (paramName === 'additionalFields') return fallback ?? {};
+				if (paramName === 'cleanupOptions') return fallback ?? {};
 				return undefined;
 			},
 			helpers: {
@@ -84,6 +85,7 @@ describe('Doc4AI Execute - File Size Limit', () => {
 				if (paramName === 'binaryPropertyName') return 'data';
 				if (paramName === 'outputFormat') return 'text';
 				if (paramName === 'additionalFields') return { maxFileSize: 50 };
+				if (paramName === 'cleanupOptions') return fallback ?? {};
 				return undefined;
 			},
 			helpers: {
