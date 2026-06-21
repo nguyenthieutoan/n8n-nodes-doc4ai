@@ -1,6 +1,6 @@
 {
   "name": "n8n-nodes-doc4ai",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "n8n community node for Doc4AI: Extract text from PDF, DOC, DOCX, XLS, XLSX, CSV, and convert text back to documents.",
   "license": "MIT",
   "author": {
