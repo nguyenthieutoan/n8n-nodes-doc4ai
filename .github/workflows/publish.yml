@@ -1,0 +1,36 @@
+name: Publish Community Node to npmjs
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  publish-package:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v6
+
+      - name: Setup Node.js Environment
+        uses: actions/setup-node@v6
+        with:
+          node-version: '24.x'
+          registry-url: 'https://registry.npmjs.org'
+          package-manager-cache: false
+
+      - name: Install Project Dependencies
+        run: npm ci
+
+      - name: Compile and Transpile TypeScript
+        run: npm run build
+
+      - name: Execute Node Linter Verification
+        run: npm run lint
+
+      - name: Publish to NPM with Provenance
+        run: npm publish --provenance --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
